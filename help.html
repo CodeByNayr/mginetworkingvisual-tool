@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help | MGI Networking Visual Tool</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      background-color: ##ffffff;
+      color: #000000;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ---------------- NAVIGATION BAR ---------------- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: #5C5BA5;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      z-index: 9000;
+    }
+
+    .navbar img {
+      height: 40px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .menu-toggle {
+      font-size: 28px;
+      cursor: pointer;
+      user-select: none;
+      position: absolute;
+      right: 20px;
+    }
+
+    /* ---------------- SLIDE-OUT NAV ---------------- */
+    .side-nav {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background: #5C5BA5;
+      color: #fff;
+      padding: 20px;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.5);
+      transition: right 0.4s ease;
+      z-index: 9500;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .side-nav.open { right: 0; }
+
+    .side-nav h3 {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .close-btn {
+      background: #000000;
+      color: #fff;
+      border: none;
+      padding: 4px 8px;
+      font-size: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .side-nav ul {
+      list-style: none;
+      flex-grow: 1;
+    }
+
+    .side-nav ul li { margin: 10px 0; }
+
+    .side-nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+    }
+
+    /* Buttons */
+    .side-nav button {
+      background: #5C5BA5;
+      color: #fff;
+      border: 1px solid #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      margin-top: 10px;
+      transition: background 0.2s ease;
+    }
+
+    .side-nav button:hover { background: #333; }
+
+    /* ---------------- HELP CONTENT ---------------- */
+    .content {
+      padding: 100px 20px 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.8;
+      text-align: justify;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #5C5BA5;
+    }
+
+    h2 {
+      margin-top: 30px;
+      font-size: 1.3rem;
+      color: #5C5BA5;
+    }
+
+    ul {
+      margin-left: 20px;
+      list-style: disc;
+    }
+
+    .back-btn {
+      display: block;
+      margin: 40px auto;
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover { background: #333; }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <img src="MGILOGO.png" alt="Miria Logo">
+    <div class="menu-toggle">☰</div>
+  </nav>
+
+  <!-- SIDE NAVIGATION -->
+  <div class="side-nav" id="sideNav">
+    <h3>
+      Menu
+      <button class="close-btn" id="closeSideNav">X</button>
+    </h3>
+    <ul>
+      <li><a href="index.html">Main</a></li>
+      <li><a href="help.html" style="color: #000000">Help</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button id="exit-btn">Exit</button>
+  </div>
+
+  <!-- MAIN HELP CONTENT -->
+  <div class="content">
+    <h1>Help & User Guide</h1>
+
+    <p>Welcome to the <strong>MGI Networking Visual Tool</strong>! This website is designed to help you visualize, build, and manage hierarchical data or conceptual structures interactively. Below is a quick guide on how to use it effectively.</p>
+
+    <h2>🧭 Getting Started</h2>
+    <ul>
+      <li>Once the main page loads, you’ll see a <strong>root node</strong> (the starting point of your structure).</li>
+      <li>Click on any node to open the <strong>Branch Options</strong> menu.</li>
+      <li>You can edit the node’s <em>name</em> and <em>description</em> directly in that menu.</li>
+    </ul>
+
+    <h2>🌱 Adding New Branches</h2>
+    <ul>
+      <li>Click any existing node.</li>
+      <li>In the menu, select <strong>Add</strong> then enter a name for the new branch.</li>
+      <li>The new branch will appear below the selected node.</li>
+    </ul>
+
+    <h2>📝 Editing a Node</h2>
+    <ul>
+      <li>Click a node to open its menu.</li>
+      <li>Change the name or add a description in the fields provided.</li>
+      <li>Click <strong>Save</strong> to apply your changes.</li>
+    </ul>
+
+    <h2>🗑️ Deleting a Branch</h2>
+    <ul>
+      <li>Click the node you want to delete.</li>
+      <li>Choose <strong>Delete</strong> from the menu.</li>
+      <li><strong>Note:</strong> The root node cannot be deleted.</li>
+    </ul>
+
+    <h2>💾 Saving Your Work</h2>
+    <ul>
+      <li>Your progress is saved automatically using <strong>local storage</strong>.</li>
+      <li>You can close or refresh the page, your data will remain intact.</li>
+    </ul>
+
+    <h2>⚙️ Navigation Controls</h2>
+    <ul>
+      <li>Use the <strong>☰</strong> icon at the top right to open the navigation menu.</li>
+      <li>From there, you can go to the Help page, About page, or exit the site.</li>
+    </ul>
+
+    <h2>💡 Tips for Best Experience</h2>
+    <ul>
+      <li>Use a desktop or tablet for the best visualization.</li>
+      <li>Keep your structure organized by grouping related branches under common nodes.</li>
+      <li>Save screenshots if you need a visual record of your network.</li>
+    </ul>
+
+    <button class="back-btn" onclick="window.location.href='index.html'">Back to Main Page</button>
+  </div>
+
+  <script>
+    const sideNav = document.getElementById("sideNav");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const closeSideNav = document.getElementById("closeSideNav");
+
+    menuToggle.addEventListener("click", () => sideNav.classList.add("open"));
+    closeSideNav.addEventListener("click", () => sideNav.classList.remove("open"));
+
+    document.getElementById("exit-btn").addEventListener("click", () => {
+      window.location.href = "about:blank";
+    });
+  </script>
+
+</body>
+</html>
